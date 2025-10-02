@@ -1,0 +1,57 @@
+{
+  "archivos": {
+    "fuente_principal": "Datos de Entrada/ScenarioPlanningDB.xlsx",
+    "plantilla": "Plantilla/Plantilla OP2627ScenarioPlanning.xlsx",
+    "salida": "Reportes Generados",
+    "adaptive_template": "Datos de Entrada/Adaptive{codigo}.xlsx"
+  },
+  "parametros_globales": {
+    "fila_encabezados_maestra": 8,
+    "hoja_maestra": "BWP",
+    "col_agrupacion": "Cost Center",
+    "col_codigo": "Cost Center Code"
+  },
+  "plantilla_salida": {
+    "celdas_de_inicio": {
+      "BWP": "A5",
+      "Overall Planned Cost": "B4"
+    },
+    "tabla_bwp": "Tabla1",
+    "tablas_adaptive": ["Tabla2", "Tabla3", "Tabla4"],
+    "estilos_adaptive": "TableStyleMedium2"
+  },
+  "interactividad": {
+    "hoja": "BWP",
+    "fila_encabezados": 4,
+    "col_dropdown": "Priority Level (select from drop down menu)",
+    "col_condicional": "Revised Planned Cost",
+    "col_fuente_l1": "Total Planned Cost by P/S"
+  },
+  "mapeo_principal": {
+    "BWP": {
+      "hoja_origen": "BWP",
+      "source_header_row": 8,
+      "mapeo_columnas": {
+        "OPT#": "OPT#",
+        "Product #": "P/S reference",
+        "Product": "Product/Service",
+        "Activity Total": "Total Planned Cost by P/S"
+      }
+    }
+  },
+  "lista_calculos": [
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C5", "op": "SUMIF", "source_sheet": "Envelope", "source_header_row": 2, "criteria_col": "Cost Center", "filter_with": "code", "sum_col": "FFHR"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C6", "op": "SUMIF", "source_sheet": "Envelope", "source_header_row": 2, "criteria_col": "Cost Center", "filter_with": "code", "sum_col": "FFActivities "},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "D5", "op": "SUMIF", "source_sheet": "Envelope", "source_header_row": 2, "criteria_col": "Cost Center", "filter_with": "code", "sum_col": " VCHR "},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "D6", "op": "SUMIF", "source_sheet": "Envelope", "source_header_row": 2, "criteria_col": "Cost Center", "filter_with": "code", "sum_col": " VCActivities"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "F13", "op": "SUMIF", "source_sheet": "FF distribution", "source_header_row": 8, "criteria_col": "Cost Center", "filter_with": "name", "sum_col": "Flexible Funds for Activities"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "G13", "op": "SUMIF", "source_sheet": "Financing Sources", "source_header_row": 8, "criteria_col": "Cost Center Code", "filter_with": "code", "sum_col": "Value"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C12", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "D22"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C13", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "D23"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "D12", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "E22"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "D13", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "E23"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C19", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "G7"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C20", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "G10"},
+    {"dest_sheet": "Overall Planned Cost", "dest_cell": "C21", "op": "COPY", "source_sheet": "Adaptive", "source_cell": "G13"}
+  ]
+}

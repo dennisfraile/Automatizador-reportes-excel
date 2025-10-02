@@ -1,0 +1,29 @@
+# Entorno virtual de Python
+# Nunca se debe subir, ya que se recrea a partir de requirements.txt
+entorno_virtual/
+venv/
+*.env
+
+# Archivos de cache de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de Excel (datos, plantillas y reportes generados)
+# Estos no se suben para mantener el repositorio liviano y sin datos específicos.
+*.xlsx
+*.xlsm
+*.xlsb
+*.xls
+
+# Archivos de registro (logs) generados por el script
+*.log
+
+# Iconos descargados o convertidos
+*.ico
+
+# Configuraciones de editores de código (opcional pero recomendado)
+.vscode/
+.idea/
+*.DS_Store
